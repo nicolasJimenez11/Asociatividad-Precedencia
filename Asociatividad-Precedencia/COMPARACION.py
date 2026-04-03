@@ -1,10 +1,10 @@
 from lark import Lark
-from lark.tree import pydot__tree_to_png # Requiere: pip install pydot
+from lark.tree import pydot__tree_to_png
 
-# --- GRAMÁTICAS CON NOMBRES RENOMBRADOS ---
+# GRAMATICAs
 
 # 1. Prueba de Asociatividad por IZQUIERDA
-# Renombrado: 'exp_izq' -> 'jerarquia_baja', 'atom' -> 'unidad'
+
 g_izq = """
     ?start: jerarquia_baja
     ?jerarquia_baja: jerarquia_baja "$" unidad | unidad
@@ -14,7 +14,7 @@ g_izq = """
 """
 
 # 2. Prueba de Asociatividad por DERECHA
-# Renombrado: 'exp_der' -> 'jerarquia_derecha', 'atom' -> 'unidad'
+
 g_der = """
     ?start: jerarquia_derecha
     ?jerarquia_derecha: unidad "#" jerarquia_derecha | unidad
@@ -24,7 +24,7 @@ g_der = """
 """
 
 # 3. Prueba de PRECEDENCIA (Combinada)
-# Renombrado: 'exp_suma' -> 'nivel_bajo', 'exp_mult' -> 'nivel_alto', 'atom' -> 'unidad'
+
 g_prec = """
     ?start: nivel_bajo
     ?nivel_bajo: nivel_bajo "+" nivel_alto | nivel_alto
@@ -49,4 +49,4 @@ def generar_imagenes_renombradas():
 
 if __name__ == "__main__":
     generar_imagenes_renombradas()
-    print("\nImágenes generadas con los nuevos nombres de reglas.")
+    print("Imágenes generadas con los nuevos nombres de reglas.")
