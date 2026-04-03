@@ -32,3 +32,34 @@ Finalmente, el código convierte estos procesos internos en imágenes PNG usando
 
 **Ejecucion en consola**
 
+Al ejecutar el script, la consola actúa como un registro de control que confirma el procesamiento de cada gramática. Verás mensajes en tiempo real indicando qué prueba se está analizando y el nombre exacto del archivo .png que se ha generado. Si existe algún error en la sintaxis de la cadena de entrada, la consola lo notificará inmediatamente, lo que permite validar que el analizador LALR está funcionando correctamente antes de revisar las imágenes.
+
+![1CONSOLA](Asociatividad-Precedencia/EJECUCIONCON.png)
+
+**Grafica 1 asociatividad por izquierda**
+
+El árbol hacia la izquierda
+
+Esta prueba muestra cómo el analizador agrupa los términos de izquierda a derecha, que es lo normal en sumas o restas. En el gráfico verás que la operación que está más a la izquierda se "hunde" más en el árbol, obligando al sistema a resolverla primero.
+
+![1GRAFICA](Asociatividad-Precedencia/Prueba_Izquierda.png)
+
+**Grafica 2 asociativiad hacia la derecha**
+
+Aquí validamos el caso opuesto, típico de potencias o asignaciones. La estructura del árbol se inclina hacia el final de la expresión, lo que significa que el proceso de evaluación empieza desde la derecha y regresa hacia el inicio.
+
+![2GRAFICA](Asociatividad-Precedencia/Prueba_Derecha.png)
+
+**Grafica 3 Mixtas Precedencia
+
+Esta es la prueba de fuego para la estratificación. Al combinar diferentes operaciones (como una suma y una multiplicación), el árbol muestra que la regla de mayor jerarquía se "hunde" hacia las ramas más bajas. Esto garantiza que el analizador resuelva primero lo que está más profundo en el árbol antes de subir a los niveles superiores, respetando siempre el orden matemático correcto.
+
+![2GRAFICA](Asociatividad-Precedencia/Prueba_Precedencia.png)
+
+**Analisis grafica**
+
+El análisis visual de los árboles confirma que la estratificación funciona correctamente. En la gráfica de precedencia, se observa que el nivel_alto (multiplicación) se ubica físicamente por debajo del nivel_bajo (suma). Esto obliga al sistema a resolver primero las operaciones en las ramas más profundas antes de subir el resultado hacia la raíz, garantizando que el orden matemático se respete siempre.
+
+Respecto a la asociatividad, la estructura del árbol muestra cómo la dirección de la recursividad inclina las ramas. Cuando el árbol se recuesta hacia la izquierda, los operadores se agrupan secuencialmente desde el inicio; por el contrario, en operadores como la potencia, la ramificación hacia la derecha demuestra que la evaluación comienza desde el último término hacia atrás.
+
+Finalmente, los nodos de unidad actúan como la base de toda la estructura. Al ser los elementos más profundos, aseguran que el analizador identifique primero los valores básicos antes de operar. Este diseño permite que, al usar paréntesis, una expresión completa se desplace al fondo del árbol, adquiriendo prioridad absoluta sobre cualquier otra regla de la gramática.
