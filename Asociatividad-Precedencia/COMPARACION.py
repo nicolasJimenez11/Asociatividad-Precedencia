@@ -34,7 +34,7 @@ g_prec = """
     %ignore WS
 """
 
-def generar_imagenes_renombradas():
+def generarImagenes():
     pruebas = [
         ("Prueba_Izquierda", g_izq, "id $ id $ id"),
         ("Prueba_Derecha", g_der, "id # id # id"),
@@ -48,5 +48,5 @@ def generar_imagenes_renombradas():
         pydot__tree_to_png(tree, f"{nombre}.png")
 
 if __name__ == "__main__":
-    generar_imagenes_renombradas()
-    print("Imágenes generadas con los nuevos nombres de reglas.")
+    generarImagenes()
+    print("Imágenes Creadas")
