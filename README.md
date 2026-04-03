@@ -50,7 +50,7 @@ Aquí validamos el caso opuesto, típico de potencias o asignaciones. La estruct
 
 ![2GRAFICA](Asociatividad-Precedencia/Prueba_Derecha.png)
 
-**Grafica 3 Mixtas Precedencia
+**Grafica 3 Mixtas Precedencia**
 
 Esta es la prueba de fuego para la estratificación. Al combinar diferentes operaciones (como una suma y una multiplicación), el árbol muestra que la regla de mayor jerarquía se "hunde" hacia las ramas más bajas. Esto garantiza que el analizador resuelva primero lo que está más profundo en el árbol antes de subir a los niveles superiores, respetando siempre el orden matemático correcto.
 
@@ -63,3 +63,10 @@ El análisis visual de los árboles confirma que la estratificación funciona co
 Respecto a la asociatividad, la estructura del árbol muestra cómo la dirección de la recursividad inclina las ramas. Cuando el árbol se recuesta hacia la izquierda, los operadores se agrupan secuencialmente desde el inicio; por el contrario, en operadores como la potencia, la ramificación hacia la derecha demuestra que la evaluación comienza desde el último término hacia atrás.
 
 Finalmente, los nodos de unidad actúan como la base de toda la estructura. Al ser los elementos más profundos, aseguran que el analizador identifique primero los valores básicos antes de operar. Este diseño permite que, al usar paréntesis, una expresión completa se desplace al fondo del árbol, adquiriendo prioridad absoluta sobre cualquier otra regla de la gramática.
+
+
+**CONCLUSIONES**
+
+El desarrollo de este proyecto permite validar que la estructura de una gramática es el "contrato" que define el comportamiento de un lenguaje. Al implementar la estratificación, logramos que el analizador jerarquice las operaciones de forma automática, eliminando cualquier ambigüedad sin necesidad de reglas externas complejas. Esto demuestra que la precedencia no es una configuración arbitraria, sino una consecuencia directa de la profundidad de las reglas en el diseño BNF.
+
+Asimismo, el uso de herramientas de visualización como Graphviz resulta fundamental para la auditoría de compiladores. Poder observar la inclinación del árbol (hacia la izquierda o derecha) nos da una prueba empírica de la asociatividad de los operadores. En conclusión, una gramática bien diseñada garantiza que el flujo de datos sea predecible, eficiente y, sobre todo, fiel a las reglas lógicas y matemáticas que el programador desea implementar.
